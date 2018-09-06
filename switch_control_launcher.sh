@@ -8,3 +8,4 @@ else
 	echo "Trying to restart"
 	echo date
 	python /home/pi/raspi_neopixel_switch_control/switch_control.py &
+fi

@@ -3,14 +3,16 @@ import numpy as np
 import requests as r
 from time import sleep
 
-def switch_turning_on(color_temp = None, brightness = None):
-    if color_temp == None and brightness == None:
-        color_temp = 3300
-        brightness = 0.5
-    r1 = r.post("http://northwall-bedroom:5000/lights_on", data = {'color_temp': str(color_temp), 'brightness': str(brightness)})
-    r2 = r.post("http://southwall-bedroom:5000/lights_on", data = {'color_temp': str(color_temp), 'brightness': str(brightness)})
+def switch_turning_on(switch, color_temp = None, brightness = None, sleep_time = 0.1):
+    sleep(sleep_time)
+    if switch.is_active: 
+        if color_temp == None and brightness == None:
+            color_temp = 3300
+            brightness = 0.5
+        r1 = r.post("http://northwall-bedroom:5000/lights_on", data = {'color_temp': str(color_temp), 'brightness': str(brightness)})
+        r2 = r.post("http://southwall-bedroom:5000/lights_on", data = {'color_temp': str(color_temp), 'brightness': str(brightness)})
 
-def switch_turning_off():
+def switch_turning_off(switch):
     r1 = r.post("http://northwall-bedroom:5000/lights_off")
     r2 = r.post("http://southwall-bedroom:5000/lights_off")
 
@@ -33,7 +35,7 @@ def logarithmic_intensity(x):
 
 if __name__ == "__main__":
     switch_pin = g.DigitalInputDevice(5)
-    switch_pin.when_activated = switch_turning_on
-    switch_pin.when_deactivated = switch_turning_off
+    switch_pin.when_activated = (lambda : switch_turning_on(switch_pin))
+    switch_pin.when_deactivated = (lambda : switch_turning_off(switch_pin))
     while True:
         sleep(1)

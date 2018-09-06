@@ -3,7 +3,7 @@ import numpy as np
 import requests as r
 from time import sleep
 
-def switch_turning_on(switch, color_temp = None, brightness = None, sleep_time = 0.1):
+def switch_turning_on(switch, color_temp = None, brightness = None, sleep_time = 1.0):
     sleep(sleep_time)
     if switch.is_active: 
         if color_temp == None and brightness == None:

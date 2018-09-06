@@ -15,3 +15,5 @@ if __name__ == "__main__":
     switch_pin = g.DigitalInputDevice(5)
     switch_pin.when_activated = switch_turning_on
     switch_pin.when_deactivated = switch_turning_off
+    while True:
+

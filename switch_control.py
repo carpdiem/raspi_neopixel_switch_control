@@ -4,7 +4,7 @@ import requests as r
 from time import sleep
 
 def switch_turning_on(color_temp = None, brightness = None):
-    if color_temp == None and brightness = None:
+    if color_temp == None and brightness == None:
         color_temp = 3300
         brightness = 0.5
     r1 = r.post("http://northwall-bedroom:5000/lights_on", data = {'color_temp': str(color_temp), 'brightness': str(brightness)})

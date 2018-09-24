@@ -7,8 +7,8 @@ def switch_turning_on(switch, color_temp = None, brightness = None, sleep_time =
     sleep(sleep_time)
     if switch.is_active: 
         if color_temp == None and brightness == None:
-            color_temp = 3300
-            brightness = 0.5
+            color_temp = 2900
+            brightness = 0.7
         r1 = r.post("http://northwall-bedroom:5000/lights_on", data = {'color_temp': str(color_temp), 'brightness': str(brightness)})
         r2 = r.post("http://southwall-bedroom:5000/lights_on", data = {'color_temp': str(color_temp), 'brightness': str(brightness)})
 

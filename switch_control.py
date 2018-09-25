@@ -31,7 +31,7 @@ def plancksLaw(t):
     return (red / max, green / max, blue / max)
 
 def logarithmic_intensity(x):
-    return 255 * (2^(5. * x) - 1) / (2^5. - 1) 
+    return 255 * (2**(5. * x) - 1) / (2**5. - 1) 
 
 if __name__ == "__main__":
     switch_pin = g.DigitalInputDevice(5)

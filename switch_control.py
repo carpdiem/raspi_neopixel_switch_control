@@ -9,12 +9,12 @@ def switch_turning_on(switch, color_temp = None, brightness = None, sleep_time =
         if color_temp == None and brightness == None:
             color_temp = 2900
             brightness = 0.7
-        r1 = r.post("http://northwall-bedroom:5000/lights_on", data = {'color_temp': str(color_temp), 'brightness': str(brightness)})
-        r2 = r.post("http://southwall-bedroom:5000/lights_on", data = {'color_temp': str(color_temp), 'brightness': str(brightness)})
+        r1 = r.post("http://northwall-bedroom.local:5000/lights_on", data = {'color_temp': str(color_temp), 'brightness': str(brightness)})
+        r2 = r.post("http://southwall-bedroom.local:5000/lights_on", data = {'color_temp': str(color_temp), 'brightness': str(brightness)})
 
 def switch_turning_off(switch):
-    r1 = r.post("http://northwall-bedroom:5000/lights_off")
-    r2 = r.post("http://southwall-bedroom:5000/lights_off")
+    r1 = r.post("http://northwall-bedroom.local:5000/lights_off")
+    r2 = r.post("http://southwall-bedroom.local:5000/lights_off")
 
 def plancksLaw(t):
     lambda_red = 630. * 10**-9
